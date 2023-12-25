@@ -1,5 +1,6 @@
 ﻿using BUS.Interfaces;
 using DataModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +15,7 @@ namespace API_Admin.Controllers
         {
             _sanPhamBusiness = sanPhamBusiness;
         }
-
+        [Authorize]
         [Route("get-by-id/{id}")]
         [HttpGet]
         public SanPhamModels GetDatabyID(int id)
