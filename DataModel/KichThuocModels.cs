@@ -13,13 +13,15 @@ namespace DataModel
         public string idmau { get; set; }
         public string kichthuoc { get; set; }
         public int soluong { get; set;}
+        public int status {  get; set; }
 
-        public KichThuocModels(string id, string idmau, string kichthuoc, int soluong)
+        public KichThuocModels(string id, string idmau, string kichthuoc, int soluong, int status)
         {
             this.id = id;
             this.idmau = idmau;
             this.kichthuoc = kichthuoc;
             this.soluong = soluong;
+            this.status = status;
         }
     }
 }

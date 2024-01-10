@@ -12,7 +12,10 @@ namespace BUS
         {
             _res = res;
         }
-
+        public List<sanphamModels_it> GetSanPhamtimkiem(string name, string id)
+        {
+            return _res.GetSanPhamtimkiem(name, id);
+        }
         public bool CreateSP(SanPhamModels models)
         {
            return _res.CreateSP(models);

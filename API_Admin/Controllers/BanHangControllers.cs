@@ -38,6 +38,18 @@ namespace API_Admin.Controllers
         {
             return _bus.ShowDonHangChuaXN();
         }
+        [Route("get-donhang-danggiao")]
+        [HttpGet]
+        public List<DonHangModels> getdsDonHangDangGiao()
+        {
+            return _bus.ShowDonHangDangGiao();
+        }
+        [Route("get-donhang-dagiao")]
+        [HttpGet]
+        public List<DonHangModels> getdsDonHangDaGiao()
+        {
+            return _bus.ShowDonHangDaGiao();
+        }
         [Route("get-chitiet-donhang/{id}")]
         [HttpPost]
         public ChiTietDonHangModels showCTdonHang(int id)

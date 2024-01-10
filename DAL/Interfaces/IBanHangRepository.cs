@@ -17,6 +17,8 @@ namespace DAL.Interfaces
         List<DonHangModels> ShowDonHangChuaXN();
         //show đơn hàng đã xác nhận
         List<DonHangModels> ShowDonHangDaXN();
+        List<DonHangModels> ShowDonHangDangGiao();
+        List<DonHangModels> ShowDonHangDaGiao();
         //xem chi tiết đơn hàng
         ChiTietDonHangModels showCTDonHang(int id);
 

@@ -11,10 +11,12 @@ namespace DataModel
         public ChiTietDonHang() { }
         public string MaDonHang { get; set; }
         public string MaSanPham {  get; set; }
+        public string TenSanPham { get;set; }
         public string MauSac {  get; set; }
         public string KichThuoc {  get; set; }
         public int SoLuong {  get; set; }
         public decimal DonGia {  get; set; }
         public int MaMau {  get; set; }
+        public int tong {  get; set; }
     }
 }

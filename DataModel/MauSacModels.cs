@@ -14,6 +14,7 @@ namespace DataModel
         public string mausac{ get; set; }
         public List<KichThuocModels> list { get; set; }
         public List<HinhAnhModels> hinhAnhModels { get; set; }
+        public int status {  get; set; }
 
         //public MauSacModels(string id, string idsp, string mausac, List<KichThuocModels> list, List<HinhAnhModels> hinhAnhModels)
         //{

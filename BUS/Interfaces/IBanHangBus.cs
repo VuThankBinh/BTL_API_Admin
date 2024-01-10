@@ -23,5 +23,8 @@ namespace BUS.Interfaces
         //Sửa chi tiết đơn hàng
         bool SuaCTdonHang(ChiTietDonHangModels donHang);
         string XacNhanDaGuiHang(int id);
+
+        List<DonHangModels> ShowDonHangDangGiao();
+        List<DonHangModels> ShowDonHangDaGiao();
     }
 }

@@ -31,6 +31,16 @@ namespace BUS
             return res.ShowDonHangChuaXN();
         }
 
+        public List<DonHangModels> ShowDonHangDaGiao()
+        {
+            return res.ShowDonHangDaGiao();
+        }
+
+        public List<DonHangModels> ShowDonHangDangGiao()
+        {
+            return res.ShowDonHangDangGiao();
+        }
+
         public List<DonHangModels> ShowDonHangDaXN()
         {
             return res.ShowDonHangDaXN();

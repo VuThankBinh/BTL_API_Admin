@@ -56,7 +56,7 @@ namespace DAL
             // Chuyển đổi DataTable thành danh sách sanphamModels_it
             
             List<ChiTietDonHang> ds = JsonConvert.DeserializeObject<List<ChiTietDonHang>>(json);
-            ChiTietDonHangModels donhang = new ChiTietDonHangModels(int.Parse(dt.Rows[0][0].ToString()),int.Parse(dt.Rows[0][1].ToString()), dt.Rows[0][2].ToString(),DateTime.Parse(dt.Rows[0][3].ToString()),Boolean.Parse(dt.Rows[0][4].ToString()), dt.Rows[0][5].ToString(),ds);
+            ChiTietDonHangModels donhang = new ChiTietDonHangModels(int.Parse(dt.Rows[0][0].ToString()),int.Parse(dt.Rows[0][1].ToString()), dt.Rows[0][2].ToString(),DateTime.Parse(dt.Rows[0][3].ToString()),Boolean.Parse(dt.Rows[0][4].ToString()), dt.Rows[0][5].ToString(),ds, dt.Rows[0][7].ToString(), dt.Rows[0][8].ToString(), dt.Rows[0][9].ToString(), dt.Rows[0][10].ToString());
 
             return donhang;
         }
@@ -75,6 +75,56 @@ namespace DAL
             List<DonHangModels> donhangList = new List<DonHangModels>();
             foreach (DataRow row in dt.Rows)
             {
+                DonHangModels dh = new DonHangModels
+                (int.Parse(row[0].ToString()), int.Parse(row[1].ToString()), row[2].ToString(), DateTime.Parse(row[3].ToString()), Boolean.Parse(row[4].ToString()), row[5].ToString(), row[6].ToString(), row[7].ToString());
+
+                donhangList.Add(dh);
+            }
+
+            return donhangList;
+        }
+
+        public List<DonHangModels> ShowDonHangDaGiao()
+        {
+            string msgError = "";
+            var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "showDonHangDaGiao");
+            if (!string.IsNullOrEmpty(msgError))
+            {
+                // Xử lý lỗi nếu cần
+                throw new Exception(msgError);
+            }
+
+            // Chuyển đổi DataTable thành danh sách sanphamModels_it
+            List<DonHangModels> donhangList = new List<DonHangModels>();
+            foreach (DataRow row in dt.Rows)
+            {
+                string aa = row[5].ToString();
+                Console.WriteLine(aa);
+                DonHangModels dh = new DonHangModels
+                (int.Parse(row[0].ToString()), int.Parse(row[1].ToString()), row[2].ToString(), DateTime.Parse(row[3].ToString()), Boolean.Parse(row[4].ToString()), row[5].ToString(), row[6].ToString(), row[7].ToString());
+
+                donhangList.Add(dh);
+            }
+
+            return donhangList;
+        }
+
+        public List<DonHangModels> ShowDonHangDangGiao()
+        {
+            string msgError = "";
+            var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "showDonHangDangGiao");
+            if (!string.IsNullOrEmpty(msgError))
+            {
+                // Xử lý lỗi nếu cần
+                throw new Exception(msgError);
+            }
+
+            // Chuyển đổi DataTable thành danh sách sanphamModels_it
+            List<DonHangModels> donhangList = new List<DonHangModels>();
+            foreach (DataRow row in dt.Rows)
+            {
+                string aa = row[5].ToString();
+                Console.WriteLine(aa);
                 DonHangModels dh = new DonHangModels
                 (int.Parse(row[0].ToString()), int.Parse(row[1].ToString()), row[2].ToString(), DateTime.Parse(row[3].ToString()), Boolean.Parse(row[4].ToString()), row[5].ToString(), row[6].ToString(), row[7].ToString());
 

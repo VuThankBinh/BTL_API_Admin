@@ -14,5 +14,6 @@ namespace BUS.Interfaces
         bool CreateSP(SanPhamModels models);
         bool UpdateSP(SanPhamModels model);
         bool DeleteSP(int id);
+        List<sanphamModels_it> GetSanPhamtimkiem(string name, string id);
     }
 }

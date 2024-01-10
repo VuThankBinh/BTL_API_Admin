@@ -14,5 +14,6 @@ namespace DAL.Interfaces
         bool CreateSP(SanPhamModels model);
         bool UpdateSP(SanPhamModels models);
         bool DeleteSP(int id);
+        List<sanphamModels_it> GetSanPhamtimkiem(string name, string id);
     }
 }

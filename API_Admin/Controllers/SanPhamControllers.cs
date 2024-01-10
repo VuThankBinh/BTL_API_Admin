@@ -15,7 +15,7 @@ namespace API_Admin.Controllers
         {
             _sanPhamBusiness = sanPhamBusiness;
         }
-        [Authorize]
+        //[Authorize]
         [Route("get-by-id/{id}")]
         [HttpGet]
         public SanPhamModels GetDatabyID(int id)
@@ -27,6 +27,12 @@ namespace API_Admin.Controllers
         public List<sanphamModels_it> GetDataSanPham()
         {
             return _sanPhamBusiness.GetSanPham();
+        }
+        [Route("get-sp-admin-timkiem")]
+        [HttpPost]
+        public List<sanphamModels_it> GetDataSanPhamtimkiem([FromBody] timkiemsp tk)
+        {
+            return _sanPhamBusiness.GetSanPhamtimkiem(tk.name,tk.id);
         }
 
         [Route("create-sp")]
@@ -45,6 +51,7 @@ namespace API_Admin.Controllers
         }
         [Route("delete-sp/{id}")]
         [HttpPost]
+        [Authorize]
         public bool DeleteSanPham(int id) { return _sanPhamBusiness.DeleteSP(id); }
     }
 }

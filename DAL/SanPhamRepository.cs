@@ -96,22 +96,41 @@ namespace DAL
 
             return sanPhamList;
         }
+        public List<sanphamModels_it> GetSanPhamtimkiem(string name, string id)
+        {
+            string msgError = "";
+            var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_timSanPham", "@TenSanPham",name, "@MaSanPham",id);
+            if (!string.IsNullOrEmpty(msgError))
+            {
+                // Xử lý lỗi nếu cần
+                throw new Exception(msgError);
+            }
 
-        public bool UpdateSP(SanPhamModels model)
+            // Chuyển đổi DataTable thành danh sách sanphamModels_it
+            List<sanphamModels_it> sanPhamList = new List<sanphamModels_it>();
+            foreach (DataRow row in dt.Rows)
+            {
+                sanphamModels_it sanPham = new sanphamModels_it
+                (int.Parse(row[0].ToString()), int.Parse(row[1].ToString()), decimal.Parse(row[2].ToString()), row[3].ToString(), row[4].ToString());
+
+                sanPhamList.Add(sanPham);
+            }
+
+            return sanPhamList;
+        }
+
+        public bool UpdateSP(SanPhamModels models)
         {
             string msgError = "";
             try
             {
-                string a = JsonConvert.SerializeObject(model);
-                Console.WriteLine(a);
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_updatesp",
-                "@MaSanPham",model.MaSanPham,
-                "@MaThuongHieu", model.MaThuongHieu,
-                "@TenSanPham", model.TenSanPham,
-                "@MoTa", model.Mota,
-                "@HinhDaiDien", model.HinhAnhDaiien,
-                "@Mau", JsonConvert.SerializeObject(model.Mau),
-                "@giaBan", Decimal.Parse(model.giaBans));
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "[dbo].[sp_update_sanpham11]",
+                "@MaSanPham", models.MaSanPham,
+                "@MaThuongHieu", models.MaThuongHieu,
+                "@TenSanPham", models.TenSanPham,
+                "@MoTa", models.Mota,
+                "@Mau", JsonConvert.SerializeObject(models.Mau),
+                "@DonGia", Decimal.Parse(models.giaBans));
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
