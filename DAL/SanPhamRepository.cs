@@ -62,7 +62,7 @@ namespace DAL
                 List<MauSacModels> mauList = JsonConvert.DeserializeObject<List<MauSacModels>>(jsonmau);
                 //List<GiaBanModels> giaList = JsonConvert.DeserializeObject<List<GiaBanModels>>(jsongia);
                 // Tiếp theo, thêm danh sách vào thuộc tính Mau của đối tượng SanPhamModels
-                SanPhamModels sanPham = new SanPhamModels(int.Parse(dt.Rows[0][0].ToString()), int.Parse(dt.Rows[0][1].ToString()), dt.Rows[0][2].ToString(), dt.Rows[0][4].ToString(), mauList, dt.Rows[0][5].ToString());
+                SanPhamModels sanPham = new SanPhamModels(int.Parse(dt.Rows[0][0].ToString()), int.Parse(dt.Rows[0][1].ToString()), dt.Rows[0][2].ToString(), dt.Rows[0][4].ToString(), mauList, dt.Rows[0][5].ToString(), dt.Rows[0][6].ToString());
                     
                 
                 return sanPham;
@@ -124,7 +124,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "[dbo].[sp_update_sanpham11]",
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "[dbo].[sp_updatesp11]",
                 "@MaSanPham", models.MaSanPham,
                 "@MaThuongHieu", models.MaThuongHieu,
                 "@TenSanPham", models.TenSanPham,

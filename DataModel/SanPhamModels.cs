@@ -22,7 +22,7 @@ namespace DataModel
 
 
         public string giaBans { get; set; }
-        public SanPhamModels(int maSanPham, int maThuongHieu, string tenSanPham, string hinhAnhDaiien, List<MauSacModels> mau, string giaBans)
+        public SanPhamModels(int maSanPham, int maThuongHieu, string tenSanPham, string hinhAnhDaiien, List<MauSacModels> mau, string giaBans,string moTa)
         {
             MaSanPham = maSanPham;
             MaThuongHieu = maThuongHieu;
@@ -30,6 +30,7 @@ namespace DataModel
             HinhAnhDaiien = hinhAnhDaiien;
             Mau = mau;
             this.giaBans = giaBans;
+            this.Mota = moTa;
         }
 
 

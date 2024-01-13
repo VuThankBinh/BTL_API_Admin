@@ -75,6 +75,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseRouting();
 app.UseCors(x => x
     .AllowAnyOrigin()
     .AllowAnyMethod()
